@@ -327,11 +327,16 @@ function doLogin(aForm) {
     // setup args for connect method
     oArgs = new Object();
     oArgs.domain = aForm.server.value;
-    //oArgs.username = aForm.username.value;
+   /* oArgs.username = aForm.username.value;
     oArgs.resource = 'jsjac_simpleclient';
-    //oArgs.pass = aForm.password.value;
-    //oArgs.register = aForm.register.checked;
-    oArgs.authtype = "anonymous";
+    oArgs.pass = aForm.password.value;
+    oArgs.register = aForm.register.checked;*/
+    oArgs.username = aForm.username.value;
+    oArgs.resource = 'jsjac_simpleclient';
+    oArgs.pass = aForm.password.value;
+    oArgs.register = aForm.register.checked;
+    //oArgs.authtype = "saslanon";
+    console.log(con, oArgs);
     con.connect(oArgs);
   } catch (e) {
     document.getElementById('err').innerHTML = e.toString();
