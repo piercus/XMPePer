@@ -1,0 +1,5 @@
+This project provides a Jetty runtime to experiment with Xmpp4Js. 
+
+To begin, execute run.bat and point your browser to http://localhost:8080
+
+The simpleclient.html is editable in-place without restarting Jetty.
