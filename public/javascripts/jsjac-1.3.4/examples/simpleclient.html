@@ -125,7 +125,6 @@ function doLogin(aForm) {
     oArgs.resource = 'jsjac_simpleclient';
     oArgs.pass = aForm.password.value;
     oArgs.register = aForm.register.checked;
-
     con.connect(oArgs);
   } catch (e) {
     document.getElementById('err').innerHTML = e.toString();

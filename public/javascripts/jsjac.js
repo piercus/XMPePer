@@ -2787,7 +2787,7 @@ JSJaCConnection.prototype.connect = function(oArg) {
     this._xmllang = oArg.xmllang;
 
   this.host = oArg.host || this.domain;
-  this.port = oArg.port || 5222;
+  this.port = oArg.port || 7070;//5222;
   if (oArg.secure)
     this.secure = 'true';
   else
