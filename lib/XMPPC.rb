@@ -37,8 +37,8 @@ class Cl < Client
     if is_connected? 
 		  @mc = Jabber::MUC::SimpleMUCClient.new(self)
 		  @mc.on_message do |t,n,m| @muc_messages.push(m) end
-		  #@mc.on_join do |j,n| @muc_joins.push({:time => t, :nick_name => n}) end
-      #join_room(room_name,nick_name)
+      @mc.on_join do |j,n| @muc_joins.push({:time => j, :nick_name => n}) end
+      join_room(room_name,nick_name)
     else
       raise Error,"not connected"
     end
