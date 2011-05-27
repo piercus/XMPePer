@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.sf.xml4script</groupId>
+    <artifactId>xml4script</artifactId>
+    <packaging>javascript</packaging>
+    <version>3.1-SNAPSHOT</version>
+    <name>XML for &lt;SCRIPT&gt;</name>
+    <url>http://xmljs.sourceforge.net/</url>
+    
+    <parent>
+        <groupId>com.soashable.jslibs</groupId>
+        <artifactId>jslibs</artifactId>
+        <version>1.0</version>
+        <relativePath>../../pom.xml</relativePath>
+    </parent>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.codehaus.mojo.javascript</groupId>
+                <artifactId>javascript-maven-extensions</artifactId>
+                <version>1.0-alpha-1-SNAPSHOT</version>
+            </extension>
+        </extensions>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo.javascript</groupId>
+                <artifactId>javascript-maven-plugin</artifactId>
+                <version>1.0-alpha-1-SNAPSHOT</version>
+                <extensions>true</extensions>
+                <configuration>
+                    
+
+                    <descriptor>${basedir}/src/assembler/xml4script.xml</descriptor>
+                    <!--
+                    <compressor>shrinksafe</compressor>
+                    <strip>;;;</strip>
+                    -->
+                    <includes>
+                        <!--
+                        TODO port tests
+
+                        <include>saxTest\saxTestSuite.html</include>
+                        <include>w3cDomTest\DOMLevel1\w3cDomTestSuite.html</include>
+                        <include>w3cDomTest\DOMLevel2\w3cDom2TestSuite.html</include>
+                        
+                        <include>classicDomTest\domTestSuite.html</include>
+                        -->
+                    </includes>
+                    <excludes>
+                        <exclude>*.html</exclude>
+                    </excludes>
+                </configuration>
+                
+            </plugin>
+        </plugins>
+    </build>
+    <distributionManagement>
+        <repository>
+            <id>mvn.soashable.com</id>
+            <url>
+                http://mvn.soashable.com/artifactory/libs-releases
+            </url>
+        </repository>
+        <snapshotRepository>
+            <id>mvn.soashable.com</id>
+            <url>
+                http://mvn.soashable.com/artifactory/libs-snapshots
+            </url>
+        </snapshotRepository>
+        <site>
+            <id>sourceforge.net-site</id>
+            <url>scp://shell.sourceforge.net/home/groups/x/xm/xmpp4js/htdocs</url>
+        </site>
+    </distributionManagement>
+    <repositories>
+        <repository>
+            <id>soashable-libs-snapshots</id>
+            <url>http://mvn.soashable.com/artifactory/libs-snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+                <checksumPolicy>fail</checksumPolicy>
+            </releases>
+            <snapshots>
+                <updatePolicy>always</updatePolicy>
+                <checksumPolicy>warn</checksumPolicy>
+            </snapshots>
+        </repository>
+    </repositories>
+    
+</project>
+

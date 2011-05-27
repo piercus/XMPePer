@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Archiver-Version: Plexus Archiver
+Created-By: Apache Maven
+Implementation-Title: XML for <SCRIPT>
+Implementation-Version: 3.1-SNAPSHOT
+Implementation-Vendor-Id: net.sf.xml4script
+Built-By: Harlan
+
