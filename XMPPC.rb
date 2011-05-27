@@ -13,6 +13,8 @@ class Cl < Client
     @host = host
     @messages = []
 		@presences = []
+		@muc_messages = []
+		@muc_joins = []
 		self.add_message_callback do |m| @messages.push(m) end
 		self.add_presence_callback do |p| @presences.push(p) end 
   end
@@ -24,8 +26,8 @@ class Cl < Client
 		@presences
 	end
 
-	def connect
-	   super(@host)
+	def connect(host = @host)
+	   super(host)
 		 self.auth(USER_CONF[@name])
 	end
 	
@@ -35,10 +37,12 @@ class Cl < Client
 	
 	def connectMUC
 		@mc = Jabber::MUC::SimpleMUCClient.new(self)
+		@mc.on_message do |t,n,m| @muc_messages.push(m) end
+		@mc.on_join do |j| @muc_joins.push(j) end
 	end
 	
 	def send_message(to, body)
-		self.send(Message::new(to + '@' + @server_name, body))
+		self.send(Message::new(to + '@' + @server_name, body).set_type(:chat))
 	end
 	
 	def get_muc
