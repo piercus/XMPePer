@@ -51,6 +51,14 @@ class Cl < Client
 		@mc
 	end
 
+	def get_muc_messages
+		@muc_messages
+	end
+
+	def get_muc_joins
+		@muc_joins
+	end
+
 	def say(msg)
 		@mc.say(msg)
 	end
