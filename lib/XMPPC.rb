@@ -6,6 +6,7 @@ include Jabber
 
 class Cl < Client
   USER_CONF = { "sam" => "moi", "kspr" => "moi", "moi" => "moi", "pierre" => "pierre", "pier" => "moi", "toi" => "toi" }
+  ROOM_DEFAULT_NAME = "room"
   def initialize(name,host = "localhost", server_name = 'kspr-r720',presence_type = ':available')
 		@name = name
 		@server_name = server_name
@@ -55,7 +56,7 @@ class Cl < Client
 		@mc.say(msg)
 	end
 
-	def join_room(room_name, nick_name)
+	def join_room(room_name = ROOM_DEFAULT_NAME, nick_name = @name+'_in_'+ROOM_DEFAULT_NAME)
 		@mc.join(room_name + '@conference.' + @server_name + '/' + nick_name)
 	end
 	
