@@ -21,12 +21,12 @@ class Cl < Client
 		self.add_message_callback do |m| @messages.push(m) end
 		self.add_presence_callback do |p| @presences.push(p) end 
     connect
-    set_presence
   end
 
 	def connect(host = @host)
 	   super(host)
 		 self.auth(USER_CONF[@name])
+     set_presence
 	end
 	
 	def set_presence(pres_type = @presence_type)
@@ -34,10 +34,14 @@ class Cl < Client
 	end
 	
 	def connectMUC(room_name = ROOM_DEFAULT_NAME, nick_name = @name+'_in_'+ROOM_DEFAULT_NAME)
-		@mc = Jabber::MUC::SimpleMUCClient.new(self)
-		@mc.on_message do |t,n,m| @muc_messages.push(m) end
-		@mc.on_join do |j,n| @muc_joins.push({:time => t, :nick_name => n}) end
-    join_room(room_name,nick_name)
+    if is_connected? 
+		  @mc = Jabber::MUC::SimpleMUCClient.new(self)
+		  @mc.on_message do |t,n,m| @muc_messages.push(m) end
+		  #@mc.on_join do |j,n| @muc_joins.push({:time => t, :nick_name => n}) end
+      #join_room(room_name,nick_name)
+    else
+      raise Error,"not connected"
+    end
 	end
 	
 	def send_message(to, body)
